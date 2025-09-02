@@ -46,11 +46,13 @@ fi
 if [ -f "backend/open_webui/env.py" ]; then
     sed -i 's/"Open WebUI")/"bonsAI Chat")/g' backend/open_webui/env.py
     sed -i 's/if WEBUI_NAME != "Open WebUI":/if WEBUI_NAME != "Open WebUI" and WEBUI_NAME != "bonsAI Chat":/g' backend/open_webui/env.py
+    sed -i 's|WEBUI_FAVICON_URL = "https://openwebui.com/favicon.png"|WEBUI_FAVICON_URL = "/static/favicon.png"|g' backend/open_webui/env.py
 fi
 
-# 9. Copy logos
+# 9. Copy logos (Frontend und Backend)
 echo "🖼️ Restoring logos..."
 if [ -f "static/static/Bonsai_Logo_ohne research.png" ]; then
+    # Frontend Favicons
     cp "static/static/Bonsai_Logo_ohne research.png" "static/static/favicon.ico"
     cp "static/static/Bonsai_Logo_ohne research.png" "static/static/favicon.png"
     cp "static/static/Bonsai_Logo_ohne research.png" "static/static/favicon-96x96.png"
@@ -59,6 +61,18 @@ if [ -f "static/static/Bonsai_Logo_ohne research.png" ]; then
     cp "static/static/Bonsai_Logo_ohne research.png" "static/static/web-app-manifest-192x192.png"
     cp "static/static/Bonsai_Logo_ohne research.png" "static/static/web-app-manifest-512x512.png"
     cp "static/static/Bonsai_Logo_ohne research.png" "static/static/logo.png"
+    
+    # Backend Favicons (für Tab-Icon)
+    if [ -d "backend/open_webui/static/" ]; then
+        cp "static/static/favicon.png" "backend/open_webui/static/favicon.png"
+        cp "static/static/logo.png" "backend/open_webui/static/logo.png"
+        cp "static/static/favicon-96x96.png" "backend/open_webui/static/favicon-96x96.png"
+        cp "static/static/apple-touch-icon.png" "backend/open_webui/static/apple-touch-icon.png"
+        cp "static/static/web-app-manifest-192x192.png" "backend/open_webui/static/web-app-manifest-192x192.png"
+        cp "static/static/web-app-manifest-512x512.png" "backend/open_webui/static/web-app-manifest-512x512.png"
+        cp "static/static/favicon.ico" "backend/open_webui/static/favicon.ico"
+        cp "static/static/favicon.svg" "backend/open_webui/static/favicon.svg"
+    fi
     cp "static/static/Bonsai_Logo_ohne research.png" "static/static/splash.png"
     cp "static/static/Bonsai_Logo_ohne research.png" "static/static/splash-dark.png"
     cp "static/static/Bonsai_Logo_ohne research.png" "static/favicon.png"

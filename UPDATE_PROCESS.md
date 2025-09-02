@@ -101,7 +101,9 @@ Diese Dateien enthalten unser Branding und sollten bei Updates überwacht werden
 - `src/app.html` - Titel und Meta-Tags
 - `static/opensearch.xml` - Suchkonfiguration
 - `static/static/site.webmanifest` - Web App Manifest
-- `static/static/favicon.*` - Alle Favicon-Dateien
+- `static/static/favicon.*` - Alle Favicon-Dateien (Frontend)
+- `backend/open_webui/static/favicon.*` - Alle Favicon-Dateien (Backend)
+- `backend/open_webui/env.py` - WEBUI_FAVICON_URL Konfiguration
 - `src/routes/+layout.svelte` - Benachrichtigungen
 - Alle Admin-Seiten in `src/routes/(app)/`
 - Backend Error Messages in `backend/open_webui/routers/`

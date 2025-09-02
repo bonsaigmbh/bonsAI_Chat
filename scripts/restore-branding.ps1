@@ -43,12 +43,13 @@ if (Test-Path "backend/open_webui/routers/openai.py") {
     (Get-Content "backend/open_webui/routers/openai.py") -replace 'Open WebUI:', 'bonsAI Chat:' -replace '"Open WebUI"', '"bonsAI Chat"' | Set-Content "backend/open_webui/routers/openai.py"
 }
 if (Test-Path "backend/open_webui/env.py") {
-    (Get-Content "backend/open_webui/env.py") -replace '"Open WebUI"\)', '"bonsAI Chat")' -replace 'if WEBUI_NAME != "Open WebUI":', 'if WEBUI_NAME != "Open WebUI" and WEBUI_NAME != "bonsAI Chat":' | Set-Content "backend/open_webui/env.py"
+    (Get-Content "backend/open_webui/env.py") -replace '"Open WebUI"\)', '"bonsAI Chat")' -replace 'if WEBUI_NAME != "Open WebUI":', 'if WEBUI_NAME != "Open WebUI" and WEBUI_NAME != "bonsAI Chat":' -replace 'WEBUI_FAVICON_URL = "https://openwebui.com/favicon.png"', 'WEBUI_FAVICON_URL = "/static/favicon.png"' | Set-Content "backend/open_webui/env.py"
 }
 
-# 9. Copy logos
+# 9. Copy logos (Frontend und Backend)
 Write-Host "🖼️ Restoring logos..."
 if (Test-Path "static/static/Bonsai_Logo_ohne research.png") {
+    # Frontend Favicons
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/favicon.ico" -Force
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/favicon.png" -Force
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/favicon-96x96.png" -Force
@@ -57,6 +58,18 @@ if (Test-Path "static/static/Bonsai_Logo_ohne research.png") {
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/web-app-manifest-192x192.png" -Force
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/web-app-manifest-512x512.png" -Force
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/logo.png" -Force
+    
+    # Backend Favicons (für Tab-Icon)
+    if (Test-Path "backend/open_webui/static/") {
+        Copy-Item "static/static/favicon.png" "backend/open_webui/static/favicon.png" -Force
+        Copy-Item "static/static/logo.png" "backend/open_webui/static/logo.png" -Force
+        Copy-Item "static/static/favicon-96x96.png" "backend/open_webui/static/favicon-96x96.png" -Force
+        Copy-Item "static/static/apple-touch-icon.png" "backend/open_webui/static/apple-touch-icon.png" -Force
+        Copy-Item "static/static/web-app-manifest-192x192.png" "backend/open_webui/static/web-app-manifest-192x192.png" -Force
+        Copy-Item "static/static/web-app-manifest-512x512.png" "backend/open_webui/static/web-app-manifest-512x512.png" -Force
+        Copy-Item "static/static/favicon.ico" "backend/open_webui/static/favicon.ico" -Force
+        Copy-Item "static/static/favicon.svg" "backend/open_webui/static/favicon.svg" -Force
+    }
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/splash.png" -Force
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/splash-dark.png" -Force
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/favicon.png" -Force
