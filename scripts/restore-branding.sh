@@ -62,6 +62,7 @@ if [ -f "static/static/Bonsai_Logo_ohne research.png" ]; then
     cp "static/static/Bonsai_Logo_ohne research.png" "static/static/splash.png"
     cp "static/static/Bonsai_Logo_ohne research.png" "static/static/splash-dark.png"
     cp "static/static/Bonsai_Logo_ohne research.png" "static/favicon.png"
+    cp "static/static/Bonsai_Logo_ohne research.png" "static/static/favicon.svg"
     
     if [ -f "backend/open_webui/static/favicon.png" ]; then
         cp "static/static/Bonsai_Logo_ohne research.png" "backend/open_webui/static/favicon.png"

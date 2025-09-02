@@ -60,6 +60,7 @@ if (Test-Path "static/static/Bonsai_Logo_ohne research.png") {
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/splash.png" -Force
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/splash-dark.png" -Force
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/favicon.png" -Force
+    Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/favicon.svg" -Force
     
     if (Test-Path "backend/open_webui/static/favicon.png") {
         Copy-Item "static/static/Bonsai_Logo_ohne research.png" "backend/open_webui/static/favicon.png" -Force
