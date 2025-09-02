@@ -43,7 +43,7 @@ if (Test-Path "backend/open_webui/routers/openai.py") {
     (Get-Content "backend/open_webui/routers/openai.py") -replace 'Open WebUI:', 'bonsAI Chat:' -replace '"Open WebUI"', '"bonsAI Chat"' | Set-Content "backend/open_webui/routers/openai.py"
 }
 if (Test-Path "backend/open_webui/env.py") {
-    (Get-Content "backend/open_webui/env.py") -replace '"Open WebUI"\)', '"bonsAI Chat")' | Set-Content "backend/open_webui/env.py"
+    (Get-Content "backend/open_webui/env.py") -replace '"Open WebUI"\)', '"bonsAI Chat")' -replace 'if WEBUI_NAME != "Open WebUI":', 'if WEBUI_NAME != "Open WebUI" and WEBUI_NAME != "bonsAI Chat":' | Set-Content "backend/open_webui/env.py"
 }
 
 # 9. Copy logos

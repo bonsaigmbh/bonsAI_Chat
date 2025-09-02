@@ -45,6 +45,7 @@ if [ -f "backend/open_webui/routers/openai.py" ]; then
 fi
 if [ -f "backend/open_webui/env.py" ]; then
     sed -i 's/"Open WebUI")/"bonsAI Chat")/g' backend/open_webui/env.py
+    sed -i 's/if WEBUI_NAME != "Open WebUI":/if WEBUI_NAME != "Open WebUI" and WEBUI_NAME != "bonsAI Chat":/g' backend/open_webui/env.py
 fi
 
 # 9. Copy logos
