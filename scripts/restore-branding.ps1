@@ -57,6 +57,8 @@ if (Test-Path "static/static/Bonsai_Logo_ohne research.png") {
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/web-app-manifest-192x192.png" -Force
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/web-app-manifest-512x512.png" -Force
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/logo.png" -Force
+    Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/splash.png" -Force
+    Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/static/splash-dark.png" -Force
     Copy-Item "static/static/Bonsai_Logo_ohne research.png" "static/favicon.png" -Force
     
     if (Test-Path "backend/open_webui/static/favicon.png") {
